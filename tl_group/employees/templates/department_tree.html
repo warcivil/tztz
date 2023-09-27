@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Древовидная структура подразделений</title>
+    <!-- Подключаем Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -10,21 +11,32 @@
         <ul class="list-group">
             {% for department in departments %}
                 <li class="list-group-item">
-                    {{ department.name }}
+                    <span class="toggle" data-toggle="collapse" data-target="#department{{ department.id }}">
+                        {{ department.name }}
+                    </span>
                     <a href="{% url 'employee_list' department_id=department.id %}" class="btn btn-primary btn-sm float-right">Показать сотрудников</a>
-                    {% if department.department_set.all %}
-                        <ul class="list-group mt-2">
-                            {% for subdepartment in department.department_set.all %}
-                                <li class="list-group-item">
-                                    {{ subdepartment.name }}
-                                    <a href="{% url 'employee_list' department_id=subdepartment.id %}" class="btn btn-primary btn-sm float-right">Показать сотрудников</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+                    <ul id="department{{ department.id }}" class="list-group collapse">
+                        {% for subdepartment in department.department_set.all %}
+                            <li class="list-group-item">
+                                {{ subdepartment.name }}
+                                <a href="{% url 'employee_list' department_id=subdepartment.id %}" class="btn btn-primary btn-sm float-right">Показать сотрудников</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </li>
             {% endfor %}
         </ul>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.toggle').click(function () {
+                $(this).toggleClass('collapsed');
+            });
+        });
+    </script>
 </body>
 </html>
