@@ -5,3 +5,6 @@
 3. генерируем данные(займет время) python3 manage.py generate_data
 
 4. запускаем сервер python3 manage.py runserver
+
+ps.
+Если не хочется долго ждать, то грузим фикстуру python3 manage.py loaddata tl_api/fixtures/data.json
