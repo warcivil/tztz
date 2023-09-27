@@ -7,6 +7,8 @@
 4. запускаем сервер python3 manage.py runserver
 
 Для раскрытия дерева подразделений надо тыкнуть по названию подразделения. 
+
+
 ps.
 Если не хочется долго ждать, то грузим фикстуру python3 manage.py loaddata tl_api/fixtures/data.json
 
