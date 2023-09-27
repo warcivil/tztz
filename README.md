@@ -8,3 +8,6 @@
 
 ps.
 Если не хочется долго ждать, то грузим фикстуру python3 manage.py loaddata tl_api/fixtures/data.json
+
+
+урл: http://127.0.0.1:8000/tree/department_tree/
