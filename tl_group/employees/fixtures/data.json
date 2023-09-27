@@ -1,0 +1,48 @@
+[
+    {
+        "model": "employees.department",
+        "pk": 1,
+        "fields": {
+            "name": "Генеральное управление",
+            "parent": null
+        }
+    },
+    {
+        "model": "employees.department",
+        "pk": 2,
+        "fields": {
+            "name": "Отдел разработки",
+            "parent": 1
+        }
+    },
+    {
+        "model": "employees.department",
+        "pk": 3,
+        "fields": {
+            "name": "Отдел тестирования",
+            "parent": 1
+        }
+    },
+    {
+        "model": "employees.employee",
+        "pk": 1,
+        "fields": {
+            "full_name": "Иван Иванов",
+            "position": "Разработчик",
+            "hire_date": "2023-01-15",
+            "salary": 50000.00,
+            "department": 2
+        }
+    },
+    {
+        "model": "employees.employee",
+        "pk": 2,
+        "fields": {
+            "full_name": "Мария Петрова",
+            "position": "Тестировщик",
+            "hire_date": "2022-12-10",
+            "salary": 45000.00,
+            "department": 3
+        }
+    }
+]
