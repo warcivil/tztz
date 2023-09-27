@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список сотрудников</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Список сотрудников в подразделении "{{ department.name }}"</h1>
+        <ul class="list-group">
+            {% for employee in employees %}
+                <li class="list-group-item">{{ employee.full_name }} - {{ employee.position }} - {{ employee.salary }}</li>
+            {% empty %}
+                <li class="list-group-item">В данном подразделении нет сотрудников.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'department_tree' %}" class="btn btn-primary mt-3">Вернуться к древовидной структуре</a>
+    </div>
+</body>
+</html>

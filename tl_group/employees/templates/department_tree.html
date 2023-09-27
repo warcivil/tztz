@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Древовидная структура подразделений</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Древовидная структура подразделений</h1>
+        <ul class="list-group">
+            {% for department in departments %}
+                <li class="list-group-item">
+                    {{ department.name }}
+                    <a href="{% url 'employee_list' department_id=department.id %}" class="btn btn-primary btn-sm float-right">Показать сотрудников</a>
+                    {% if department.department_set.all %}
+                        <ul class="list-group mt-2">
+                            {% for subdepartment in department.department_set.all %}
+                                <li class="list-group-item">
+                                    {{ subdepartment.name }}
+                                    <a href="{% url 'employee_list' department_id=subdepartment.id %}" class="btn btn-primary btn-sm float-right">Показать сотрудников</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
